@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:th="http://www.thymeleaf.org">
+	  
+	<head>
+		
+		<th:block th:replace="~{ common/headers :: before_title }"></th:block>
+			  
+		<title>
+			Portfolio Profile Page Fragments
+		</title>
+		
+		<th:block th:replace="~{ common/headers :: after_title }"></th:block>
+		
+
+		<th:block th:fragment="after_title">
+			<link th:href="|${projectData.urlPrefixServer1}/pages/portfolio_profile_page/portfolio_profile_page_styles.css|"
+						      rel="stylesheet">
+						  
+			<script th:src="|${projectData.urlPrefixServer1}/pages/portfolio_profile_page/portfolio_fetch.mjs|"
+					        type="module"
+							defer>
+			</script>
+			
+			<script th:src="|${projectData.urlPrefixServer1}/pages/portfolio_profile_page/chart_portfolio_profile_page.mjs|"
+								        type="module"
+										defer>
+			</script>
+		</th:block>
+
+		
+	</head>
+	
+	
+	<body>
+		
+		<p>Current Page: Portfolio Profile Page Fragments.</p>
+		
+		
+		<!-- Fragment: grid_middle_content --> 
+		
+		<th:block th:fragment="grid_middle_content">
+			<!-- <p>Welcome to the Portfolio Profile Page.</p> -->
+			
+			<th:block th:with="numPortfolios = ${portfolioList.size()},
+			                   condition = ${numPortfolios} == 1">
+							   
+				<th:block th:if="${condition}">
+					<th:block th:replace="~{  :: content_fragment }"></th:block>
+					<th:block th:replace="~{  :: script_arguments_fragment }"></th:block>
+					<th:block th:replace="~{  :: page_placeholders_fragment }"></th:block>
+				</th:block>
+				<th:block th:unless="${condition}">
+					<th:block th:replace="~{  :: error_message_fragment }"></th:block>			
+				</th:block>
+				
+			</th:block>
+			
+		</th:block>
+		
+
+		<!-- Fragment: script_arguments_fragment --> 
+
+		<th:block th:fragment="script_arguments_fragment" th:object="${portfolioList.getFirst()}">
+			
+			<div class="script_arguments">
+				<p id="script_arguments_1_portfolio_id" th:text="*{id}"></p>
+		    </div>
+						
+		</th:block>
+
+		
+				
+
+		<!-- Fragment: content_fragment --> 
+
+		<th:block th:fragment="content_fragment">
+			<th:block th:replace="~{  :: content_header_fragment }"></th:block>
+			<th:block th:replace="~{  :: portfolio_fragment }"></th:block>
+			<th:block th:replace="~{  :: chart_fragment }"></th:block>
+			<th:block th:replace="~{  :: investments_fragment }"></th:block>			
+		</th:block>
+		
+
+		<!-- Fragment: content_header_fragment --> 
+
+		<th:block th:fragment="content_header_fragment">
+			<div id="content_header_block_id_1">
+				<div class="title">
+					<h1>
+						Portfolio Profile Page
+					</h1>
+				</div>
+				<div class="content">
+				</div>
+			</div>	
+		</th:block>		
+		
+		
+		
+		
+		
+
+		<!-- Fragment: portfolio_fragment --> 
+
+		<th:block th:fragment="portfolio_fragment" th:object="${portfolioList.getFirst()}">
+			<div id="portfolio_block_id_1" class="portfolio_block container-fluid px-0 text-center">
+				<div class="row gx-1">
+					<div class="col-md-12">
+						<div class="title_block">
+							<p>Portfolio:</p>
+						</div>
+					</div>
+				</div>
+				<div class="row gx-1">
+					<div class="col-md-12">
+						<div class="portfolio_name_block">
+							<div class="content">
+								<p th:text="|*{name}|"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row gx-1">
+					<div class="col-md-6">
+						<div class="portfolio_current_value_block">
+							<div class="content text-md-end">
+								<p></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="portfolio_value_change_block">
+							<div class="content text-md-start">
+								<p></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row gx-1">
+					<div class="col-md-4">
+						<div class="portfolio_start_day_block">
+							<div class="title">
+								<p>Invest Start Day:</p>
+							</div>
+							<div class="content">
+								<p></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="portfolio_change_value_absolute_block">
+							<div class="title">
+								<p>Value Change (Absolute):</p>
+							</div>
+							<div class="content">
+								<p></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="portfolio_change_value_percent_block">
+							<div class="title">
+								<p>Value Change (%):</p>
+							</div>
+							<div class="content">
+								<p></p>
+							</div>
+						</div>					
+					</div>
+				</div>
+				<div class="row gx-1">
+					<div class="col-md-6">
+						<div class="portfolio_value_start_block">
+							<div class="title">
+								<p>Value Start:</p>
+							</div>
+							<div class="content">
+								<p></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="portfolio_value_end_block">
+							<div class="title">
+								<p>Value End:</p>
+							</div>
+							<div class="content">
+								<p></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row gx-1">
+					<div class="col-md-12">
+						<div class="portfolio_description_block">
+							<div class="title">
+								<p>Portfolio Description:</p>
+							</div>
+							<div class="content">
+								<p th:text="*{description}"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</th:block>
+
+		<!-- Fragment: chart_fragment --> 
+
+		<th:block th:fragment="chart_fragment">
+			<div id="chart_block_id_1" class="chart_block">
+				<div class="title_block">
+					<p>Chart:</p>
+				</div>
+				<div class="chart_data_range_block">
+					<th:block th:replace="~{  :: chart_data_range_fragment }"></th:block>
+				</div>
+				<div class="chart_display_block">
+				</div>
+			</div>
+		</th:block>
+
+
+		<!-- Fragment: chart_data_range_fragment --> 
+
+		<th:block th:fragment="chart_data_range_fragment">
+			<div id="chart_data_range_block_id_1" class="chart_data_range_block container-fluid text-center">
+				<div class="row">
+					<div class="col-md my-3">
+						<button id="button_1_year" type="button" class="btn rounded-pill w-100">1 Year</button>
+					</div>
+					<div class="col-md my-3">
+						<button id="button_6_months" type="button" class="btn rounded-pill w-100">6 Months</button>
+					</div>
+					<div class="col-md my-3">
+						<button id="button_3_months" type="button" class="btn rounded-pill w-100">3 Months</button>
+					</div>
+				</div>
+			</div>
+		</th:block>
+
+		
+
+		<!-- Fragment: investments_fragment --> 
+
+		<th:block th:fragment="investments_fragment" th:object="${portfolioList.getFirst()}">
+			<div id="investments_block_id_1" class="investments_block container-fluid px-0 text-center">
+				<div class="row gx-1">
+					<div class="col-md-12">
+						<div class="title_block">
+							<p>Investments:</p>
+						</div>
+					</div>
+				</div>
+				<div class="row gx-1">
+					<div class="col-md-12">
+						<div class="portfolio_name_block">
+							<div class="content">
+								<p th:text="|*{name}|"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row gx-1">
+					<div class="col-md-12">
+						<div class="investments_list_block">
+							<div class="content">
+								<th:block th:replace="~{  :: investments_list_fragment }"></th:block>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</th:block>
+
+
+		<!-- Fragment: investments_list_fragment -->
+
+		<th:block th:fragment="investments_list_fragment">
+			<div class="table-responsive">
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Symbol</th>
+							<th scope="col">Name</th>
+							<th scope="col">Quantity</th>
+							<th scope="col">Value Start</th>
+							<th scope="col">Value End</th>
+							<th scope="col">Value Change (%)</th>
+						</tr>
+					</thead>
+					<tbody class="table-group-divider">
+						<th:block th:with="investSlotList = ${portfolioList.getFirst().investSlots}">
+							<th:block th:each="currInvestSlot, loopStatus : ${investSlotList}" >
+								<tr>
+									<th scope="row" th:text="|${loopStatus.count}|"></th>
+									<td th:text="|${currInvestSlot.company.symbol}|"></td>
+									<td th:text="|${currInvestSlot.company.name}|"></td>
+									<td th:text="|${currInvestSlot.investQuantity}|"></td>
+									<td th:class="|format_price|"
+									    th:text="|${currInvestSlot.investValueStart}|"></td>
+									<td th:class="|format_price|" 
+									    th:text="|${currInvestSlot.investValueEnd}|"></td>
+									<td th:class="|format_percent|" 
+									    th:text="|${currInvestSlot.changeInvestValuePercent}|"></td>
+								</tr>								
+							</th:block>
+						</th:block>
+					</tbody>
+				</table>
+			</div>
+		</th:block>
+
+		
+		
+
+		<!-- Fragment: grid_left_content --> 
+
+		<th:block th:fragment="grid_left_content">
+			
+			<th:block th:with="numPortfolios = ${portfolioList.size()},
+					           condition = ${numPortfolios} == 1">
+							   
+				<th:block th:if="${condition}">
+					<th:block th:replace="~{  :: nav_bar_left_fragment }"></th:block>
+				</th:block>
+				
+			</th:block>
+			
+		</th:block>
+		
+		
+
+		<!-- Fragment: nav_bar_left_fragment --> 
+
+		<th:block th:fragment="nav_bar_left_fragment">
+			
+			<div id="nav_bar_left_block_id_1" class="nav_bar_left_block container-fluid text-center">		
+				<div class="row">
+					<div class="col py-3">
+						<button id="button_portfolio_settings"
+						        class="btn rounded-pill w-100" 
+						        type="button"
+								data-bs-toggle="modal"
+								data-bs-target="#modal_portfolio_settings">
+							Portfolio Settings
+						</button>
+					</div>					
+				</div>
+				<div class="row">
+					<div class="col py-3">
+						<button id="button_add_investment" 
+						        class="btn rounded-pill w-100"
+						        type="button"
+								data-bs-toggle="modal"
+								data-bs-target="#modal_add_investment">
+							Add Investment
+						</button>
+					</div>					
+				</div>				
+				<div class="row">
+					<div class="col py-3">
+						<button id="button_remove_investment"
+						        class="btn rounded-pill w-100" 
+						        type="button"
+								data-bs-toggle="modal"
+								data-bs-target="#modal_remove_investment">
+							Remove Investment
+						</button>
+					</div>					
+				</div>					
+			</div>
+			
+			<th:block th:replace="~{  :: nav_bar_left_modal_portfolio_settings_fragment }"></th:block>
+			<th:block th:replace="~{  :: nav_bar_left_modal_add_investment_fragment }"></th:block>
+			<th:block th:replace="~{  :: nav_bar_left_modal_remove_investment_fragment }"></th:block>
+			
+		</th:block>
+
+		
+
+		<!-- Fragment: nav_bar_left_modal_portfolio_settings_fragment --> 
+
+		<th:block th:fragment="nav_bar_left_modal_portfolio_settings_fragment">
+			<div id="modal_portfolio_settings"
+			     class="modal fade"
+				 tabindex="-1"
+				 aria-labelledby="modal_portfolio_settings_title"
+				 aria-hidden="true">
+				 
+				<div class="modal-dialog modal-xl modal-fullscreen-md-down">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 id="modal_portfolio_settings_title" 
+							    class="modal-title fs-5">
+								Portfolio Settings
+							</h1>
+							<button class="btn-close" 
+							        type="button"
+									data-bs-dismiss="modal"
+									aria-label="Close">
+							</button>
+						</div>
+						<div class="modal-body">
+							<th:block th:replace="~{  :: modal_body_portfolio_settings_fragment }"></th:block>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-secondary" 
+							        type="button"
+									data-bs-dismiss="modal">
+								Close
+							</button>
+							<button class="btn btn-info"
+							        form="form_portfolio_settings" 
+							        type="reset">
+								Reset		
+							</button>							
+							<button class="btn btn-primary"
+							        form="form_portfolio_settings" 
+							        type="submit">
+								Submit		
+							</button>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			
+		</th:block>
+
+
+		<!-- Fragment: modal_body_portfolio_settings_fragment --> 
+
+		<th:block th:fragment="modal_body_portfolio_settings_fragment"
+		          th:object="${portfolioList.getFirst()}">
+				  
+			<form id="form_portfolio_settings" 
+			      th:action="|${projectData.urlPrefixServer1}/portfolios/update_settings|" 
+			      method="post">
+
+				<input id="portfolio_settings_id"
+				       type="hidden"
+					   name="id" 
+				  	   th:value="|*{id}|">
+				<br />				  
+				
+				<div class="input-group mb-3">
+					<span class="input-group-text">
+						Portfolio Name:
+					</span>
+					<input id="portfolio_settings_name" 
+					       class="form-control"
+					       type="text"
+						   maxlength="40"
+						   name="name"
+						   th:value="|*{name}|"
+						   required>					
+				</div>
+
+				<div class="input-group mb-3">
+					<span class="input-group-text">
+						Invest Start Day:
+					</span>
+					<input id="portfolio_settings_invest_start_day" 
+					       class="form-control"
+					       type="number"
+						   max="-1"
+						   name="investStartDay"
+						   th:value="|*{investStartDay}|"
+						   aria-describedby="portfolio_settings_invest_start_day_form_text"
+						   required>			
+				</div>
+				<div id="portfolio_settings_invest_start_day_form_text"
+				     class="form-text text-start mb-3">
+					Please enter a negative integer.
+				</div>
+				<br />
+				
+				
+
+				<div class="input-group mb-3">
+					<span class="input-group-text">
+						Portfolio Description:
+					</span>
+					<input id="portfolio_settings_description" 
+					       class="form-control"
+					       type="text"
+						   maxlength="500"
+						   name="description"
+						   th:value="|*{description}|"
+						   required>					
+				</div>
+								
+				
+			</form>
+						
+		</th:block>
+		
+
+		
+		
+		
+		
+		
+				
+		<!-- ADD INVESTMENT -->
+
+		
+		
+		<!-- Fragment: nav_bar_left_modal_add_investment_fragment --> 
+
+		<th:block th:fragment="nav_bar_left_modal_add_investment_fragment">
+			<div id="modal_add_investment"
+			     class="modal fade"
+				 tabindex="-1"
+				 aria-labelledby="modal_add_investment_title"
+				 aria-hidden="true">
+				 
+				<div class="modal-dialog modal-xl modal-fullscreen-md-down">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 id="modal_add_investment_title" 
+							    class="modal-title fs-5">
+								Add Investment
+							</h1>
+							<button class="btn-close" 
+							        type="button"
+									data-bs-dismiss="modal"
+									aria-label="Close">
+							</button>
+						</div>
+						<div class="modal-body">
+							<th:block th:replace="~{  :: modal_body_add_investment_fragment }"></th:block>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-secondary" 
+							        type="button"
+									data-bs-dismiss="modal">
+								Close
+							</button>
+							<button class="btn btn-info"
+							        form="form_add_investment" 
+							        type="reset">
+								Reset		
+							</button>							
+							<button class="btn btn-primary"
+							        form="form_add_investment" 
+							        type="submit">
+								Submit		
+							</button>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			
+		</th:block>
+
+
+		<!-- Fragment: modal_body_add_investment_fragment --> 
+
+		<th:block th:fragment="modal_body_add_investment_fragment"
+		          th:object="${portfolioList.getFirst()}">
+				  
+			<form id="form_add_investment" 
+			      th:action="|${projectData.urlPrefixServer1}/portfolios/add_investment|" 
+			      method="post">
+
+				<input id="add_investment_portfolio_id"
+				       type="hidden"
+					   name="portfolio_id" 
+				  	   th:value="|*{id}|">
+				<br />				  
+
+				
+				<!-- START SELECT -->
+								
+				<div class="input-group mb-3">
+					<span class="input-group-text">
+						Company:
+					</span>
+
+					<select class="form-select form-select-lg" name="company_id" aria-label="Company Select">
+						<th:block th:each="currCompany, loopStatus : ${companyList}" >
+							
+							<option th:value="|${currCompany.id}|" 
+							        th:text="|${currCompany.symbol}: ${currCompany.name}|">
+								
+							</option>
+									
+						</th:block>					
+					</select>
+				
+				</div>
+				
+
+				<div class="input-group mb-3">
+					<span class="input-group-text">
+						Quantity:
+					</span>
+					<input id="add_investment_quantity" 
+					       class="form-control"
+					       type="number"
+						   min="1"
+						   name="company_quantity"
+						   value="1"
+						   aria-describedby="add_investment_quantity_form_text"
+						   required>			
+				</div>
+				<div id="add_investment_quantity_form_text"
+				     class="form-text text-start mb-3">
+					Please enter a positive integer.
+				</div>
+				<br />
+				
+				
+			</form>
+						
+		</th:block>
+		
+
+
+	
+				
+		<!-- REMOVE INVESTMENT -->
+
+
+
+		<!-- Fragment: nav_bar_left_modal_remove_investment_fragment --> 
+
+		<th:block th:fragment="nav_bar_left_modal_remove_investment_fragment">
+			<div id="modal_remove_investment"
+			     class="modal fade"
+				 tabindex="-1"
+				 aria-labelledby="modal_remove_investment_title"
+				 aria-hidden="true">
+				 
+				<div class="modal-dialog modal-xl modal-fullscreen-md-down">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 id="modal_remove_investment_title" 
+							    class="modal-title fs-5">
+								Remove Investment
+							</h1>
+							<button class="btn-close" 
+							        type="button"
+									data-bs-dismiss="modal"
+									aria-label="Close">
+							</button>
+						</div>
+						<div class="modal-body">
+							<th:block th:replace="~{  :: modal_body_remove_investment_fragment }"></th:block>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-secondary" 
+							        type="button"
+									data-bs-dismiss="modal">
+								Close
+							</button>
+							<button class="btn btn-info"
+							        form="form_remove_investment" 
+							        type="reset">
+								Reset		
+							</button>							
+							<button class="btn btn-primary"
+							        form="form_remove_investment" 
+							        type="submit">
+								Submit		
+							</button>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			
+		</th:block>
+
+
+		<!-- Fragment: modal_body_remove_investment_fragment --> 
+
+		<th:block th:fragment="modal_body_remove_investment_fragment"
+		          th:object="${portfolioList.getFirst()}">
+				  
+			<form id="form_remove_investment" 
+			      th:action="|${projectData.urlPrefixServer1}/portfolios/remove_investment|" 
+			      method="post">
+
+				<input id="remove_investment_portfolio_id"
+				       type="hidden"
+					   name="portfolio_id" 
+				  	   th:value="|*{id}|">
+				<br />				  
+				
+				
+				
+				<div class="text-start mb-3">
+					<h4>
+						Please select the checkbox next to the investments you want to remove:
+					</h4>
+				</div>
+				
+				<!-- START CHECKBOX -->
+				<th:block th:each="currInvestSlot, loopStatus : *{investSlots}">
+					
+					<div class="input-group mb-3">
+						
+						<div class="input-group-text">
+							<input id="remove_investment_checkbox" 
+							       class="form-check-input"
+							       type="checkbox"
+								   th:name="|invest_slot_id_list|"
+								   th:value="|${currInvestSlot.id}|"
+								   aria-label="Remove Investment Checkbox">								
+						</div>
+						
+						<div class="form-floating">
+							<input id="remove_investment_company_symbol" 
+							       class="form-control"
+							       type="text"
+								   maxlength="40"
+								   th:value="|${currInvestSlot.company.symbol}|"
+								   placeholder="Place Holder Symbol"
+								   readonly>
+							<label for="remove_investment_company_symbol">
+								Symbol
+							</label>															   							
+						</div>
+						
+						<div class="form-floating">
+							<input id="remove_investment_company_name" 
+							       class="form-control"
+							       type="text"
+								   maxlength="40"
+								   th:value="|${currInvestSlot.company.name}|"
+								   placeholder="Place Holder Name"
+								   readonly>
+							<label for="remove_investment_company_name">
+								Name
+							</label>															   							
+						</div>	
+											
+						<div class="form-floating">
+							<input id="remove_investment_quantity" 
+							       class="form-control"
+							       type="text"
+								   maxlength="40"
+								   th:value="|${currInvestSlot.investQuantity}|"
+								   placeholder="Place Holder Quantity"
+								   readonly>
+							<label for="remove_investment_quantity">
+								Quantity
+							</label>															   							
+						</div>
+						
+						<div class="form-floating">
+							<input id="remove_investment_value_start" 
+							       class="form-control"
+							       type="text"
+								   maxlength="40"
+								   th:value="|${currInvestSlot.investValueStart}|"
+								   placeholder="Place Holder Value Start"
+								   readonly>
+							<label for="remove_investment_value_start">
+								Value Start
+							</label>															   							
+						</div>						
+						
+						<div class="form-floating">
+							<input id="remove_investment_value_end" 
+							       class="form-control"
+							       type="text"
+								   maxlength="40"
+								   th:value="|${currInvestSlot.investValueEnd}|"
+								   placeholder="Place Holder Value End"
+								   readonly>
+							<label for="remove_investment_value_end">
+								Value End
+							</label>															   							
+						</div>
+												
+						<div class="form-floating">
+							<input id="remove_investment_value_change_percent" 
+							       class="form-control"
+							       type="text"
+								   maxlength="40"
+								   th:value="|${currInvestSlot.changeInvestValuePercent}%|"
+								   placeholder="Place Holder Value Change Percent"
+								   readonly>
+							<label for="remove_investment_value_change_percent">
+								Value Change (%)
+							</label>															   							
+						</div>													
+						
+					</div>					
+
+						   								
+				</th:block>
+								
+				
+			</form>
+						
+		</th:block>
+
+				
+						
+		
+
+		<!-- Fragment: page_placeholders_fragment --> 
+
+		<th:block th:fragment="page_placeholders_fragment">
+			
+			<div class="page_placeholders">
+				<div class="page_placeholders_chart">
+					<div>
+						<span class="spinner-grow" role="placeholder">
+						</span>
+						<span class="spinner-grow" role="placeholder">
+						</span>
+						<span class="spinner-grow" role="placeholder">
+						</span>						
+					</div>					
+				</div>
+				
+				<span class="page_placeholders_form_submit">
+					<span class="spinner-border spinner-border-sm" role="placeholder">
+					</span>
+				</span>							
+			</div>
+						
+		</th:block>
+
+		
+		
+						
+		<!-- Fragment: error_message_fragment --> 
+
+		<th:block th:fragment="error_message_fragment">
+			<div class="error_message_block">
+				<div class="error_message_title_block">
+					<p>Error Message:</p>
+				</div>
+				<div class="error_message_content_block">
+					<p th:text="|numPortfolios == ${numPortfolios}|"></p>
+				</div>
+			</div>
+		</th:block>
+
+		
+
+	</body>
+	
+</html>
+

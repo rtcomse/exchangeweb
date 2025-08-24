@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:th="http://www.thymeleaf.org">
+	  
+	<head>
+		
+		<th:block th:replace="~{ common/headers :: before_title }"></th:block>
+			  
+		<title>
+			About Page Fragments
+		</title>
+		
+		<th:block th:replace="~{ common/headers :: after_title }"></th:block>
+		
+		<th:block th:fragment="after_title">	
+					
+			<link th:href="|${projectData.urlPrefixServer1}/pages/about_page/about_page_styles.css|"
+				  rel="stylesheet">
+				  
+		</th:block>		
+		
+	</head>
+	
+	
+	<body>
+		
+		<p>Current Page: About Page Fragments.</p>
+		
+		
+		<!-- Fragment: grid_middle_content --> 
+		
+		<th:block th:fragment="grid_middle_content">
+			<!-- <p>Welcome to the About Page.</p> -->
+			
+			<th:block th:replace="~{  :: content_fragment }"></th:block>
+			
+		</th:block>
+		
+		
+		<!-- Fragment: content_fragment --> 
+
+		<th:block th:fragment="content_fragment">
+			<th:block th:replace="~{  :: content_header_fragment }"></th:block>
+			<th:block th:replace="~{  :: about_company_listing_page_fragment }"></th:block>
+			<th:block th:replace="~{  :: about_company_profile_page_fragment }"></th:block>
+			<th:block th:replace="~{  :: about_portfolio_listing_page_fragment }"></th:block>
+			<th:block th:replace="~{  :: about_portfolio_profile_page_fragment }"></th:block>
+		</th:block>		
+		
+
+		<!-- Fragment: content_header_fragment --> 
+
+		<th:block th:fragment="content_header_fragment">
+			<div id="content_header_block_id_1">
+				<div class="title">
+					<h1>
+						About
+					</h1>
+				</div>
+				<div class="content">
+					<p>This is a stock exchange website.</p>
+					<p>
+						Users can view the chart and other data 
+						for all the companies listed on the stock exchange.
+					</p>
+					<p>
+						Users can also create portfolios
+						to track the performance of groups of companies.
+					</p>
+				</div>
+			</div>	
+		</th:block>
+		
+		
+
+		<!-- Fragment: about_company_listing_page_fragment --> 
+
+		<th:block th:fragment="about_company_listing_page_fragment">
+			<div id="about_company_listing_page_block_id_1">
+				<div class="title">
+					<h1>
+						Company Listing Page
+					</h1>
+				</div>
+				<div class="content">
+					<p>
+						The Company Listing Page lists all the companies
+						according to their company symbol
+						in alphabetical order.
+					</p>
+					<p>
+						Clicking on a specific letter
+						will show a list of all the companies
+						that have a company symbol starting with that letter.
+					</p>
+					<p>
+						Clicking on one of the listed companies
+						will take the user to the Company Profile Page
+						for that company. 
+					</p>
+					
+					<br />
+					
+					<p>
+						On the navigation bar, click on "Stocks"
+						to go to the Company Listing Page.
+					</p>
+					
+					
+					
+					
+				</div>
+			</div>	
+		</th:block>		
+		
+
+		<!-- Fragment: about_company_profile_page_fragment --> 
+
+		<th:block th:fragment="about_company_profile_page_fragment">
+			<div id="about_company_profile_page_block_id_1">
+				<div class="title">
+					<h1>
+						Company Profile Page
+					</h1>
+				</div>
+				<div class="content">
+					<p>
+						The Company Profile Page shows 
+						the quote data and the chart data 
+						for a specific company.
+					</p>
+					<p>
+						The quote data for a company includes 
+						the current price, the last close price, and
+						how much the price has changed since last close.
+					</p>
+					<p>
+						The chart data for a company includes 
+						the stock price for the past 1 year.
+						The user can also choose to only view the stock price 
+						for the past 6 months, or the past 3 months.
+					</p>
+					
+					<br />
+					
+					<p>
+						On the navigation bar, click on "Stocks"
+						to go to the Company Listing Page.
+						Click on one of the listed companies to go to 
+						its Company Profile Page.
+					</p>
+					
+					
+					
+					
+				</div>
+			</div>	
+		</th:block>		
+
+		
+
+		<!-- Fragment: about_portfolio_listing_page_fragment --> 
+
+		<th:block th:fragment="about_portfolio_listing_page_fragment">
+			<div id="about_portfolio_listing_page_block_id_1">
+				<div class="title">
+					<h1>
+						Portfolio Listing Page
+					</h1>
+				</div>
+				<div class="content">
+					<p>
+						The Portfolio Listing Page 
+						lists all the portfolios that have been created 
+						by a specific user.
+					</p>
+					<p>
+						Clicking on a specific letter
+						will show a list of all the portfolios
+						that have a portfolio name starting with that letter.
+					</p>
+					<p>
+						Clicking on one of the listed portfolios
+						will take the user to the Portfolio Profile Page
+						for that portfolio. 
+					</p>
+					
+					<br />
+					
+					<p>
+						The "Create Portfolio" button 
+						can be used to 
+						create a new portfolio.
+					</p>
+					<p>
+						The "Delete Portfolio" button 
+						can be used to 
+						delete an existing portfolio.
+					</p>
+					
+					<br />
+					
+					<p>
+						On the navigation bar, click on "Portfolios"
+						to go to the Portfolio Listing Page.
+					</p>
+					
+					
+					
+					
+				</div>
+			</div>	
+		</th:block>		
+		
+
+		<!-- Fragment: about_portfolio_profile_page_fragment --> 
+
+		<th:block th:fragment="about_portfolio_profile_page_fragment">
+			<div id="about_portfolio_profile_page_block_id_1">
+				<div class="title">
+					<h1>
+						Portfolio Profile Page
+					</h1>
+				</div>
+				<div class="content">
+					<p>
+						The Portfolio Profile Page shows 
+						the investment value data and the chart data 
+						for a specific portfolio.
+					</p>
+					<p>
+						A portfolio is composed of investments in a group of companies.
+						The investment value of the portfolio 
+						is tracked from the "Invest Start Day" to today.
+					</p>
+					<p>
+						The investment value data for a portfolio includes 
+						the value of the portfolio at the beginning of the investment period,
+						the value of the portfolio at the end of the investment period, 
+						and the change in the value of the portfolio over the investment period.
+					</p>
+					<p>
+						The chart data for a portfolio includes 
+						the value of the portfolio for the past 1 year.
+						The user can also choose to only view the value of the portfolio 
+						for the past 6 months, or the past 3 months.
+					</p>
+					
+					<br />
+					
+					<p>
+						The "Portfolio Settings" button
+						can be used
+						to update the settings for the portfolio.
+					</p>
+					<p>
+						The "Add Investment" button
+						can be used
+						to add an investment in a specific company.
+					</p>
+					<p>
+						The "Remove Investment" button
+						can be used
+						to remove an investment in a specific company.
+					</p>
+					
+					<br />
+					
+					<p>
+						On the navigation bar, click on "Portfolios"
+						to go to the Portfolio Listing Page.
+						Click on one of the listed portfolios to go to 
+						its Portfolio Profile Page.
+					</p>
+					
+					
+					
+					
+				</div>
+			</div>	
+		</th:block>		
+
+			
+		
+		
+
+	</body>
+	
+</html>
+

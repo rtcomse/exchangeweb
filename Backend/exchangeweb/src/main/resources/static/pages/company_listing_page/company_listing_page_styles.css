@@ -1,0 +1,85 @@
+:root {
+	
+	--content-header-block-background-color: #D1E7DD ;
+	
+	--nav-bar-left-button-color: white ;
+	--nav-bar-left-button-background-color: green ;	
+	
+}
+
+
+
+/* Content Header Block: */
+
+#content_header_block_id_1 {
+	
+	background-color: var( --content-header-block-background-color ) ;
+	
+	margin-top: 2dvh ;
+	margin-bottom: 2dvh ;
+	
+	border-color: green ;	
+	border-style: solid ;
+	border-width: 3px ;
+	border-radius: 25px ;
+	
+	padding-top: 1dvh ;
+	padding-bottom: 1dvh ;
+	
+}
+
+
+#content_header_block_id_1 .content {
+	
+	font-size: 20px ;
+	
+}
+
+
+
+/* Alphabet Accordion Block */
+
+#alphabet_accordion_block_id_1 .accordion-body .table tbody tr {
+	
+	cursor: pointer ;
+	
+}
+
+
+
+
+/* Nav Bar Left Block: */
+
+#nav_bar_left_block_id_1 {
+	
+	margin-top: 2dvh ;
+	
+	padding-top: 30dvh ;
+	padding-bottom: 30dvh ;
+	
+}
+
+
+#nav_bar_left_block_id_1 button {
+	
+	font-weight: bold ; 
+	
+	color: var( --nav-bar-left-button-color ) ;
+	
+	background-color: var( --nav-bar-left-button-background-color ) ;
+	
+}
+
+#nav_bar_left_block_id_1 button:active {
+	
+	color: var( --nav-bar-left-button-background-color ) ;
+	
+	background-color: var( --nav-bar-left-button-color ) ;
+	
+	border-color: var( --nav-bar-left-button-background-color ) ;	
+	border-style: solid ;
+	border-width: 2px ;
+	
+}
+
+

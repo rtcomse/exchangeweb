@@ -1,0 +1,251 @@
+:root {
+	
+	--chart-path-color: SteelBlue ;
+	--chart-height: 80vh  ;
+	
+}
+
+
+
+
+/* Quote Block: */
+
+.quote_block {
+	
+	border-style: solid ;
+	
+	margin-bottom: 20px ;
+	
+}
+
+.quote_block .title_block {
+	
+	font-weight: bold ; 
+	font-size: 25px ;
+
+	color: white ;
+
+	background-color: green ;
+	
+}
+
+
+.quote_block .title {
+	
+	font-weight: bold ; 
+
+	color: white ;
+
+	background-color: green ;
+	
+}
+
+.quote_block .content {
+	
+	font-size: 110% ;
+
+	color: black ;
+
+}
+
+
+.quote_block .company_name_and_symbol_block .content {
+	
+	font-size: 130% ;
+	
+	font-weight: bold ;
+
+}
+
+.quote_block .company_current_price_block .content {
+	
+	font-size: 120% ; 
+	
+	font-weight: bold ;
+	
+}
+
+.quote_block .company_price_change_block .content {
+	
+	font-size: 120% ; 
+	
+	font-weight: bold ;
+	
+}
+
+
+.quote_block .company_description_block .content {
+	
+	font-size: 105% ;
+		
+}
+
+
+
+/* Chart Block: */
+
+.chart_block {
+
+	border-style: solid ;
+	border-color: black ;
+
+	margin-bottom: 20px ;
+	
+}
+
+
+
+.chart_block .title_block {
+	
+	font-weight: bold ;
+	font-size: 25px ;
+	
+	color: black ;
+	
+	background-color: orange ;
+	
+	border-bottom-style: solid ;
+	border-color: black ;
+	
+}
+
+.chart_block .chart_data_range_block {
+	
+	border-bottom-style: solid ;
+	border-color: black ;
+	
+}
+
+.chart_block .chart_display_block {
+	
+	height: var( --chart-height ) ;
+	
+	background-color: white ;
+	
+}
+
+
+
+#chart_data_range_block_id_1 button {
+	
+	font-weight: bold ; 
+	
+	color: white ;
+	
+	background-color: var( --chart-path-color ) ;
+	
+}
+
+#chart_data_range_block_id_1 button.pressed {
+	
+	color: var( --chart-path-color ) ;
+	
+	background-color: white ;
+	
+	border-color: var( --chart-path-color ) ;	
+	border-style: solid ;
+	border-width: 2px ;
+	
+}
+
+
+
+
+
+
+#chart_block_id_1 svg {
+	
+	height: 100% ;	
+	width: 100% ;
+		
+}
+
+#chart_block_id_1 svg #data_path {
+	
+	fill: none ;
+	stroke: var( --chart-path-color ) ;
+	stroke-width: 3px ;
+	
+}
+
+
+
+#chart_block_id_1 svg #data_highlight_group g circle {
+	
+	fill: var( --chart-path-color ) ;
+	stroke: black ;
+	stroke-width: 3px ;
+
+}
+
+#chart_block_id_1 svg #data_highlight_group g line {
+	
+	stroke: black ;	
+	stroke-width: 7px ;
+
+}
+
+
+#chart_block_id_1 svg #data_highlight_group g * {
+	
+	opacity: 0% ;
+
+}
+
+#chart_block_id_1 svg #data_highlight_group g:has( *:hover ) * {
+	
+	opacity: 100% ;
+
+}
+
+
+
+
+#chart_block_id_1 svg #data_label_chart_title {
+
+	font-size: 40px ;
+
+}
+
+#chart_block_id_1 svg #data_label_x_axis {
+
+	font-size: 30px ;
+
+}
+
+#chart_block_id_1 svg #data_label_y_axis {
+
+	font-size: 30px ;
+
+}
+
+#chart_block_id_1 svg .tick text {
+
+	font-size: 20px ;
+
+}
+
+
+
+#chart_block_id_1 .page_placeholders_chart div {
+	
+	position: relative ;
+	transform: translate( 0px, calc( var( --chart-height ) * 0.50 ) ) ;
+
+}
+
+
+
+
+/* Content Header Block: */
+
+#content_header_block_id_1 {
+	
+	margin-top: 2dvh ;
+	margin-bottom: 2dvh ;
+	
+	padding-top: 1dvh ;
+	padding-bottom: 1dvh ;
+	
+}
+

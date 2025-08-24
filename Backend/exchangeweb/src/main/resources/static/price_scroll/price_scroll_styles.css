@@ -1,0 +1,87 @@
+@keyframes animate_scroll {
+	
+	from {
+		
+		transform: translateX( 0% ) ;
+		
+	}
+	
+	to {
+		
+		transform: translateX( -50% ) ;
+		
+	}
+	
+}
+
+
+:root {
+	
+	--price-scroll-border-color: #D1E7DD ;
+	
+}
+
+
+
+#price_scroll_holder {
+	
+	
+	color: white ;
+	background-color: green ;
+	
+	display: inline-flex ;
+	white-space: nowrap ;
+	
+	border-bottom-color: var( --price-scroll-border-color ) ;	
+	border-bottom-style: solid ;
+	border-bottom-width: 3px ;	
+	
+	
+	animation-name: animate_scroll ;
+	animation-duration: 50s ;
+	animation-iteration-count: infinite ;
+	animation-delay: 2s ;
+	animation-timing-function: linear ;
+
+		
+}
+
+#price_scroll_holder_1 {
+
+	background-color: white ;
+	
+
+	display: flex ;
+	
+	min-width: 100vw ;
+	
+}
+
+
+#price_scroll_holder_2 {
+		
+	background-color: white ;
+	
+
+	display: flex ;
+	
+	min-width: 100vw ;
+	
+}
+
+
+
+.price_scroll_item {
+	
+	font-size: 120% ;
+	font-weight: bold ;
+	
+	color: black ;
+	background-color: white ;
+
+	padding-left: 20px ;
+	padding-right: 20px ;
+		
+}
+
+

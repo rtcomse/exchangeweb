@@ -1,0 +1,17 @@
+:root {
+	
+	--nav-bar-main-background-color: #D1E7DD ;
+	
+}
+
+
+
+/* Nav Bar Main Styles */
+
+#nav_bar_block_id_1 {
+	
+	background-color: var( --nav-bar-main-background-color ) ;
+	
+}
+
+

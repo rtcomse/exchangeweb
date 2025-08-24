@@ -1,0 +1,68 @@
+@media ( max-width: 767px ) {
+	
+	#login_box_block_id_1 {
+
+		    display: flex ;
+		    flex-direction: column ;
+		    flex-wrap: nowrap ;
+		    justify-content: center ;
+		    align-items: stretch ;
+			
+			text-align: center ;
+
+		    padding: 10px ;
+
+	}
+
+
+	#login_box_block_id_1 .title,
+	#login_box_block_id_1 .content,
+	#login_box_signup_button,
+	#login_box_login_button,
+	#login_box_delete_button,
+	#login_box_logout_button {
+		
+		display: block ;
+			
+	}
+
+}
+
+
+
+
+
+#login_box_block_id_1 .title {
+	
+	font-weight: bold ;
+		
+}
+
+#login_box_block_id_1 .hide_login_box_button {
+	
+	display: none ;
+	
+}
+
+
+#login_box_signup_button:not( :hover ) {
+	
+	background-color: white ;
+	
+}
+
+
+#login_box_delete_button:not( :hover ) {
+	
+	background-color: white ;
+	
+}
+
+
+.login_box_placeholders {
+	
+	display: none ;
+	
+}
+
+

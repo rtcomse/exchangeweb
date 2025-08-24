@@ -1,0 +1,37 @@
+:root {
+	
+	--welcome-block-background-color: #D1E7DD ;
+	
+}
+
+
+/* Welcome Block: */
+
+#welcome_block_id_1 {
+	
+	background-color: var( --welcome-block-background-color ) ;
+	
+	margin-top: 10dvh ;
+	
+	border-color: green ;	
+	border-style: solid ;
+	border-width: 3px ;
+	border-radius: 25px ;
+	
+	padding-top: 20dvh ;
+	padding-bottom: 20dvh ;
+	
+}
+
+
+#welcome_block_id_1 .content {
+	
+	font-size: 20px ;
+	
+}
+
+
+
+
+
+

@@ -1,0 +1,80 @@
+:root {
+	
+	--content-header-block-background-color: #D1E7DD ;
+	--content-header-block-border-color: green ;
+	
+	--content-about-block-background-color: white ;
+	--content-about-block-border-color: green ;
+	
+}
+
+
+
+/* Content Header Block: */
+
+#content_header_block_id_1 {
+	
+	background-color: var( --content-header-block-background-color ) ;
+	
+	margin-top: 2dvh ;
+	margin-bottom: 2dvh ;
+	
+	border-color: var( --content-header-block-border-color ) ;	
+	border-style: solid ;
+	border-width: 3px ;
+	border-radius: 25px ;
+	
+	padding-top: 1dvh ;
+	padding-bottom: 1dvh ;
+	
+}
+
+
+#content_header_block_id_1 .content {
+	
+	font-size: 20px ;
+	
+}
+
+
+
+
+/* Content About Block: */
+
+#about_company_listing_page_block_id_1,
+#about_company_profile_page_block_id_1,
+#about_portfolio_listing_page_block_id_1,
+#about_portfolio_profile_page_block_id_1 {
+	
+	background-color: var( --content-about-block-background-color ) ;
+	
+	margin-top: 2dvh ;
+	margin-bottom: 2dvh ;
+	
+	border-color: var( --content-about-block-border-color ) ;	
+	border-style: solid ;
+	border-width: 3px ;
+	border-radius: 25px ;
+	
+	padding-top: 1dvh ;
+	padding-bottom: 1dvh ;
+	
+}
+
+
+#about_company_listing_page_block_id_1 .content,
+#about_company_profile_page_block_id_1 .content,
+#about_portfolio_listing_page_block_id_1 .content,
+#about_portfolio_profile_page_block_id_1 .content {
+	
+	font-size: 20px ;
+	
+}
+
+
+
+
+
+
+
+

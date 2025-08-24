@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:th="http://www.thymeleaf.org">
+	  
+	<head>
+		
+		<th:block th:replace="~{ common/headers :: before_title }"></th:block>
+			  
+		<title>
+			Grid Layout Page
+		</title>
+		
+		<th:block th:replace="~{ common/headers :: after_title }"></th:block>
+		
+		<th:block th:fragment="after_title">
+			<th:block th:replace="~{ layout/nav_bar :: after_title }"></th:block>
+			<th:block th:replace="~{ price_scroll/price_scroll :: after_title }"></th:block>
+			<th:block th:replace="~{ login_box/login_box :: after_title }"></th:block>
+		</th:block>
+		
+	</head>
+	
+	
+	<body>
+		
+		<p>Current Page: Grid Layout Page.</p>
+		
+		<th:block th:fragment="grid_layout ( grid_left_content, 
+		                                     grid_middle_content,
+											 grid_right_content )">
+											 
+			<div class="container-fluid overflow-hidden text-center">
+				<div class="row">
+					<div class="col-12 px-0" id="grid_nav">
+						<th:block th:replace="~{ layout/nav_bar :: nav_bar }"></th:block>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 px-0" id="grid_price_scroll">
+						<th:block th:replace="~{ price_scroll/price_scroll :: price_scroll_content }"></th:block>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2 order-2 order-sm-2 order-md-1" id="grid_left">
+						<th:block th:replace="${ grid_left_content }"></th:block>
+					</div>
+					<div class="col-md-8 order-1 order-sm-1 order-md-2" id="grid_middle">
+						<th:block th:replace="${ grid_middle_content }"></th:block>
+					</div>
+					<div class="col-md-2 order-3 order-sm-3 order-md-3" id="grid_right">
+						<th:block th:replace="${ grid_right_content }"></th:block>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12" id="grid_footer">
+						
+					</div>
+				</div>
+			</div>
+			
+		</th:block>
+
+	</body>
+	
+</html>
+
+

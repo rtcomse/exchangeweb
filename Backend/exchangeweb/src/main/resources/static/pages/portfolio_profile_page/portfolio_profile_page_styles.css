@@ -1,0 +1,382 @@
+:root {
+	
+	--chart-path-color: SteelBlue ;
+	--chart-height: 80vh  ;
+	
+	--nav-bar-left-button-color: white ;
+	--nav-bar-left-button-background-color: green ;
+	--nav-bar-left-border-color: var( --nav-bar-left-button-background-color ) ;	
+	
+}
+
+
+
+
+/* Portfolio Block: */
+
+.portfolio_block {
+	
+	border-style: solid ;
+	
+	margin-bottom: 20px ;
+	
+}
+
+.portfolio_block .title_block {
+	
+	font-weight: bold ; 
+	font-size: 25px ;
+
+	color: white ;
+
+	background-color: green ;
+	
+}
+
+
+.portfolio_block .title {
+	
+	font-weight: bold ; 
+
+	color: white ;
+
+	background-color: green ;
+	
+}
+
+.portfolio_block .content {
+	
+	font-size: 110% ;
+
+	color: black ;
+
+}
+
+
+.portfolio_block .portfolio_name_block .content {
+	
+	font-size: 130% ;
+	
+	font-weight: bold ;
+
+}
+
+.portfolio_block .portfolio_current_value_block .content {
+	
+	font-size: 120% ; 
+	
+	font-weight: bold ;
+	
+}
+
+.portfolio_block .portfolio_value_change_block .content {
+	
+	font-size: 120% ; 
+	
+	font-weight: bold ;
+	
+}
+
+
+.portfolio_block .portfolio_description_block .content {
+	
+	font-size: 105% ;
+		
+}
+
+
+
+/* Chart Block: */
+
+.chart_block {
+	
+	border-style: solid ;
+	border-color: black ;
+	
+	margin-bottom: 20px ;
+	
+}
+
+.chart_block .title_block {
+	
+	font-weight: bold ; 
+	font-size: 25px ;
+	
+	color: black ;
+	
+	background-color: orange ;
+	
+	border-bottom-style: solid ;
+	border-color: black ;
+	
+}
+
+.chart_block .chart_data_range_block {
+	
+	border-bottom-style: solid ;
+	border-color: black ;
+	
+}
+
+.chart_block .chart_display_block {
+	
+	height: var( --chart-height ) ;
+	
+	background-color: white ;
+	
+}
+
+
+
+#chart_data_range_block_id_1 button {
+	
+	font-weight: bold ; 
+	
+	color: white ;
+	
+	background-color: var( --chart-path-color ) ;
+	
+}
+
+#chart_data_range_block_id_1 button.pressed {
+	
+	color: var( --chart-path-color ) ;
+	
+	background-color: white ;
+	
+	border-color: var( --chart-path-color ) ;	
+	border-style: solid ;
+	border-width: 2px ;
+	
+}
+
+
+
+
+#chart_block_id_1 svg {
+	
+	height: 100% ;	
+	width: 100% ;
+		
+}
+
+#chart_block_id_1 svg .data_path {
+	
+	fill: none ;
+	stroke: var( --chart-path-color ) ;
+	stroke-width: 3px ;
+	
+}
+
+
+
+#chart_block_id_1 svg #data_highlight_group g circle {
+	
+	fill: var( --chart-path-color ) ;
+	stroke: black ;
+	stroke-width: 3px ;
+
+}
+
+#chart_block_id_1 svg #data_highlight_group g line {
+	
+	stroke: black ;	
+	stroke-width: 7px ;
+
+}
+
+#chart_block_id_1 svg #data_highlight_group g * {
+	
+	opacity: 0% ;
+
+}
+
+#chart_block_id_1 svg #data_highlight_group g:has( *:hover ) * {
+	
+	opacity: 100% ;
+
+}
+
+
+
+#chart_block_id_1 svg #data_label_chart_title {
+
+	font-size: 40px ;
+
+}
+
+#chart_block_id_1 svg #data_label_x_axis {
+
+	font-size: 30px ;
+
+}
+
+#chart_block_id_1 svg #data_label_y_axis {
+
+	font-size: 30px ;
+
+}
+
+#chart_block_id_1 svg .tick text {
+
+	font-size: 30px ;
+
+}
+
+
+
+#chart_block_id_1 .page_placeholders_chart div {
+	
+	position: relative ;
+	transform: translate( 0px, calc( var( --chart-height ) * 0.50 ) ) ;
+
+}
+
+
+
+
+/* Investments Block: */
+
+.investments_block {
+	
+	border-style: solid ;
+	
+	margin-bottom: 20px ;
+	
+}
+
+.investments_block .title_block {
+	
+	font-weight: bold ;
+	font-size: 25px ;
+	
+	color: black ;
+
+	background-color: DarkTurquoise ;
+	
+}
+
+
+.investments_block .title {
+	
+	font-weight: bold ; 
+
+	color: white ;
+
+	background-color: DarkTurquoise ;
+	
+}
+
+.investments_block .content {
+	
+	font-size: 110% ;
+
+	color: black ;
+
+}
+
+
+.investments_block .portfolio_name_block .content {
+	
+	font-size: 130% ;
+	
+	font-weight: bold ;
+
+}
+
+.investments_block .portfolio_current_value_block .content {
+	
+	font-size: 120% ; 
+	
+	font-weight: bold ;
+	
+}
+
+.investments_block .portfolio_value_change_block .content {
+	
+	font-size: 120% ; 
+	
+	font-weight: bold ;
+	
+}
+
+
+.investments_block .portfolio_description_block .content {
+	
+	font-size: 105% ;
+		
+}
+
+
+#investments_block_id_1 td.format_percent {
+	
+	font-size: 120% ; 
+	
+	font-weight: bold ;
+	
+}
+
+#investments_block_id_1 td.indicator_positive {
+	
+	color: var( --indicator-positive ) ;
+	
+}
+#investments_block_id_1 td.indicator_negative {
+	
+	color: var( --indicator-negative ) ;
+	
+}
+
+
+
+
+/* Content Header Block: */
+
+#content_header_block_id_1 {
+	
+	margin-top: 2dvh ;
+	margin-bottom: 2dvh ;
+	
+	padding-top: 1dvh ;
+	padding-bottom: 1dvh ;
+	
+}
+
+
+
+/* Nav Bar Left Block: */
+
+#nav_bar_left_block_id_1 {
+	
+	margin-top: 2dvh ;
+	
+	padding-top: 30dvh ;
+	padding-bottom: 30dvh ;	
+	
+}
+
+
+#nav_bar_left_block_id_1 button {
+	
+	font-weight: bold ; 
+	
+	color: var( --nav-bar-left-button-color ) ;
+	
+	background-color: var( --nav-bar-left-button-background-color ) ;
+	
+}
+
+#nav_bar_left_block_id_1 button:active {
+	
+	color: var( --nav-bar-left-button-background-color ) ;
+	
+	background-color: var( --nav-bar-left-button-color ) ;
+	
+	border-color: var( --nav-bar-left-button-background-color ) ;	
+	border-style: solid ;
+	border-width: 2px ;
+	
+}
+
+
+

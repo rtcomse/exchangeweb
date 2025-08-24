@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:th="http://www.thymeleaf.org">
+	  
+	<head>
+		
+		<th:block th:replace="~{ common/headers :: before_title }"></th:block>
+			  
+		<title>
+			Company Profile Page Fragments
+		</title>
+		
+		<th:block th:replace="~{ common/headers :: after_title }"></th:block>
+		
+
+		<th:block th:fragment="after_title">
+			<link th:href="|${projectData.urlPrefixServer1}/pages/company_profile_page/company_profile_page_styles.css|"
+						      rel="stylesheet">
+						  
+			<script th:src="|${projectData.urlPrefixServer1}/pages/company_profile_page/quote_fetch.mjs|"
+					        type="module"
+							defer>
+			</script>
+			
+			<script th:src="|${projectData.urlPrefixServer1}/pages/company_profile_page/chart_company_profile_page.mjs|"
+								        type="module"
+										defer>
+			</script>
+		</th:block>
+
+		
+	</head>
+	
+	
+	<body>
+		
+		<p>Current Page: Company Profile Page Fragments.</p>
+		
+		
+		<!-- Fragment: grid_middle_content --> 
+		
+		<th:block th:fragment="grid_middle_content">
+			<!-- <p>Welcome to the Company Profile Page.</p> -->
+			
+			<th:block th:with="numCompanies = ${companyList.size()},
+			                   condition = ${numCompanies} == 1">
+							   
+				<th:block th:if="${condition}">
+					<th:block th:replace="~{  :: content_fragment }"></th:block>
+					<th:block th:replace="~{  :: page_placeholders_fragment }"></th:block>
+				</th:block>
+				<th:block th:unless="${condition}">
+					<th:block th:replace="~{  :: error_message_fragment }"></th:block>			
+				</th:block>
+				
+			</th:block>
+			
+		</th:block>
+		
+		
+
+		<!-- Fragment: content_fragment --> 
+
+		<th:block th:fragment="content_fragment">
+			<th:block th:replace="~{  :: content_header_fragment }"></th:block>
+			<th:block th:replace="~{  :: quote_fragment }"></th:block>
+			<th:block th:replace="~{  :: chart_fragment }"></th:block>			
+		</th:block>
+		
+
+		<!-- Fragment: content_header_fragment --> 
+
+		<th:block th:fragment="content_header_fragment">
+			<div id="content_header_block_id_1">
+				<div class="title">
+					<h1>
+						Company Profile Page
+					</h1>
+				</div>
+				<div class="content">
+				</div>
+			</div>	
+		</th:block>		
+		
+		
+		
+
+		<!-- Fragment: quote_fragment --> 
+
+		<th:block th:fragment="quote_fragment" th:object="${companyList.getFirst()}">
+			<div id="quote_block_id_1" class="quote_block container-fluid px-0 text-center">
+				<div class="row gx-1">
+					<div class="col-md-12">
+						<div class="title_block">
+							<p>Quote:</p>
+						</div>
+					</div>
+				</div>
+				<div class="row gx-1">
+					<div class="col-md-12">
+						<div class="company_name_and_symbol_block">
+							<div class="content">
+								<p th:text="|*{name} (*{symbol})|"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row gx-1">
+					<div class="col-md-6">
+						<div class="company_current_price_block">
+							<div class="content text-md-end">
+								<p></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="company_price_change_block">
+							<div class="content text-md-start">
+								<p></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row gx-1">
+					<div class="col-md-4">
+						<div class="company_last_close_price_block">
+							<div class="title">
+								<p>Last Close:</p>
+							</div>
+							<div class="content">
+								<p></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="company_change_price_absolute_block">
+							<div class="title">
+								<p>Price Change (Absolute):</p>
+							</div>
+							<div class="content">
+								<p></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="company_change_price_percent_block">
+							<div class="title">
+								<p>Price Change (%):</p>
+							</div>
+							<div class="content">
+								<p></p>
+							</div>
+						</div>					
+					</div>
+				</div>
+				<div class="row gx-1">
+					<div class="col-md-4">
+						<div class="company_one_year_high_price_block">
+							<div class="title">
+								<p>52-Week High:</p>
+							</div>
+							<div class="content">
+								<p></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="company_one_year_low_price_block">
+							<div class="title">
+								<p>52-Week Low:</p>
+							</div>
+							<div class="content">
+								<p></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="company_symbol_block">
+							<div class="title">
+								<p>Company Symbol:</p>
+							</div>
+							<div class="content">
+								<p th:text="*{symbol}"></p>
+							</div>
+						</div>					
+					</div>
+				</div>
+				<div class="row gx-1">
+					<div class="col-md-12">
+						<div class="company_description_block">
+							<div class="title">
+								<p>Company Description:</p>
+							</div>
+							<div class="content">
+								<p th:text="*{description}"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="script_arguments">
+					<p id="script_arguments_1_company_id" th:text="*{id}"></p>
+					<p id="script_arguments_2_quote_id" th:text="*{quote.id}"></p>
+				</div>
+			</div>
+		</th:block>
+
+		<!-- Fragment: chart_fragment --> 
+
+		<th:block th:fragment="chart_fragment">
+			<div id="chart_block_id_1" class="chart_block">
+				<div class="title_block">
+					<p>Chart:</p>
+				</div>
+				<div class="chart_data_range_block">
+					<th:block th:replace="~{  :: chart_data_range_fragment }"></th:block>
+				</div>
+				<div class="chart_display_block">
+				</div>
+			</div>
+		</th:block>
+
+
+		<!-- Fragment: chart_data_range_fragment --> 
+
+		<th:block th:fragment="chart_data_range_fragment">
+			<div id="chart_data_range_block_id_1" class="chart_data_range_block container-fluid text-center">
+				<div class="row">
+					<div class="col-md my-3">
+						<button id="button_1_year" type="button" class="btn rounded-pill w-100">1 Year</button>
+					</div>
+					<div class="col-md my-3">
+						<button id="button_6_months" type="button" class="btn rounded-pill w-100">6 Months</button>
+					</div>
+					<div class="col-md my-3">
+						<button id="button_3_months" type="button" class="btn rounded-pill w-100">3 Months</button>
+					</div>
+				</div>
+			</div>
+		</th:block>
+
+		
+
+		
+		<!-- Fragment: page_placeholders_fragment --> 
+
+		<th:block th:fragment="page_placeholders_fragment">
+			
+			<div class="page_placeholders">
+				<div class="page_placeholders_chart">
+					<div>
+						<span class="spinner-grow" role="placeholder">
+						</span>
+						<span class="spinner-grow" role="placeholder">
+						</span>
+						<span class="spinner-grow" role="placeholder">
+						</span>						
+					</div>					
+				</div>				
+			</div>
+						
+		</th:block>
+
+		
+				
+		<!-- Fragment: error_message_fragment --> 
+
+		<th:block th:fragment="error_message_fragment">
+			<div class="error_message_block">
+				<div class="error_message_title_block">
+					<p>Error Message:</p>
+				</div>
+				<div class="error_message_content_block">
+					<p th:text="|numCompanies == ${numCompanies}|"></p>
+				</div>
+			</div>
+		</th:block>
+
+		
+
+	</body>
+	
+</html>
+

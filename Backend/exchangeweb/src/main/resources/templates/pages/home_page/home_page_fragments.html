@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:th="http://www.thymeleaf.org">
+	  
+	<head>
+		
+		<th:block th:replace="~{ common/headers :: before_title }"></th:block>
+			  
+		<title>
+			Home Page Fragments
+		</title>
+		
+		<th:block th:replace="~{ common/headers :: after_title }"></th:block>
+		
+		<th:block th:fragment="after_title">	
+					
+			<link th:href="|${projectData.urlPrefixServer1}/pages/home_page/home_page_styles.css|"
+				  rel="stylesheet">
+				  
+		</th:block>		
+		
+	</head>
+	
+	
+	<body>
+		
+		<p>Current Page: Home Page Fragments.</p>
+		
+		
+		<!-- Fragment: grid_middle_content --> 
+		
+		<th:block th:fragment="grid_middle_content">
+			<!-- <p>Welcome to the Home Page.</p> -->
+			
+			<div id="welcome_block_id_1">
+				<div class="title">
+					<h1>
+						Welcome to the UMSE stock exchange website.
+					</h1>					
+				</div>
+				<br />
+				<div class="content">
+					<p>
+						On this website, you can view the chart and other data 
+						for all the companies that are listed on the Upswing Markets Stock Exchange (UMSE).
+					</p>
+
+					<p>
+						Furthermore, you can create portfolios 
+						to track the performance of groups of companies over time.
+					</p>
+
+					<p>
+						Please sign up for an account 
+						to be able to use the portfolios feature of this website.
+					</p>					
+				</div>
+			</div>
+		</th:block>
+
+	</body>
+	
+</html>
+

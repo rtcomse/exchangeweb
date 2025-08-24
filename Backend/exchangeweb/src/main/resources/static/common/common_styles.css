@@ -1,0 +1,67 @@
+:root {
+	
+	--indicator-positive: limegreen ;
+	--indicator-negative: red ;
+	
+}
+
+
+.indicator_positive {
+	
+	color: var( --indicator-positive ) ;
+	
+}
+
+
+.indicator_negative {
+	
+	color: var( --indicator-negative ) ;
+	
+}
+
+
+
+
+
+.error_message_block {
+	
+	border-color: black ;
+	border-style: solid ;
+	
+}
+
+.error_message_title_block {
+	
+	font-weight: bold ; 
+	
+	color: white ;
+	
+	background-color: red ;
+	
+}
+
+.error_message_content_block {
+	
+	text-align: left ;
+	
+	padding: 10px ;
+	
+}
+
+
+.script_arguments {
+	
+	display: none ;
+	
+}
+
+.page_placeholders {
+	
+	display: none ;
+	
+}
+
+
+
+
+

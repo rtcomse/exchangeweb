@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:th="http://www.thymeleaf.org">
+	  
+	<head>
+		
+		<th:block th:replace="~{ common/headers :: before_title }"></th:block>
+			  
+		<title>
+			Login Box Page
+		</title>
+		
+		<th:block th:replace="~{ common/headers :: after_title }"></th:block>
+		
+		<th:block th:fragment="after_title">
+			<link th:href="|${projectData.urlPrefixServer1}/login_box/login_box_styles.css|"
+						      rel="stylesheet">
+							  
+			<script th:src="|${projectData.urlPrefixServer1}/login_box/login_box_script.mjs|"
+					        type="module"
+							defer>
+			</script>
+		</th:block>
+		
+		
+		
+	</head>
+	
+	
+	<body>
+		
+		<th:block th:fragment="login_box_fragment">
+			<div id="login_box_block_id_1">
+				<span class="title">
+					Username:
+				</span>
+				<span class="content">					
+				</span>
+							
+				<a id="login_box_signup_button"
+				   class="btn btn-outline-primary" 
+				   th:href="|#|"
+				   role="button"
+				   data-bs-toggle="modal"
+				   data-bs-target="#modal_login_box_signup">
+					Sign up	
+				</a>	
+				<a id="login_box_login_button"
+				   class="btn btn-primary" 
+				   th:href="|${projectData.urlPrefixServer1}/login|"
+				   role="button">
+					Log in	
+				</a>
+				<a id="login_box_delete_button"
+				   class="btn btn-outline-danger hide_login_box_button" 
+				   th:href="|#|"
+				   role="button"
+				   data-bs-toggle="modal"
+				   data-bs-target="#modal_login_box_delete">
+					Delete	
+				</a>							
+				<a id="login_box_logout_button"
+				   class="btn btn-secondary hide_login_box_button" 
+				   th:href="|${projectData.urlPrefixServer1}/custom_logout|"
+				   role="button">
+					Log out	
+				</a>	
+				
+				
+				<th:block th:replace="~{  :: modal_login_box_signup_fragment }"></th:block>
+				<th:block th:replace="~{  :: modal_login_box_delete_fragment }"></th:block>
+							
+				<th:block th:replace="~{  :: login_box_placeholders_fragment }"></th:block>			
+					
+			</div>	
+			
+			
+					
+		</th:block>
+		
+		
+		<!-- CREATE ACCOUNT -->	
+
+			
+		<!-- Fragment: modal_login_box_signup_fragment --> 
+
+		<th:block th:fragment="modal_login_box_signup_fragment">
+			<div id="modal_login_box_signup"
+			     class="modal fade"
+				 tabindex="-1"
+				 aria-labelledby="modal_login_box_signup_title"
+				 aria-hidden="true">
+				 
+				<div class="modal-dialog modal-xl modal-fullscreen-md-down">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 id="modal_login_box_signup_title" 
+							    class="modal-title fs-5">
+								Sign up
+							</h1>
+							<button class="btn-close" 
+							        type="button"
+									data-bs-dismiss="modal"
+									aria-label="Close">
+							</button>
+						</div>
+						<div class="modal-body">
+							<th:block th:replace="~{  :: modal_body_login_box_signup_fragment }"></th:block>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-secondary" 
+							        type="button"
+									data-bs-dismiss="modal">
+								Close
+							</button>
+							<button class="btn btn-info"
+							        form="form_login_box_signup" 
+							        type="reset">
+								Reset		
+							</button>							
+							<button class="btn btn-primary"
+							        form="form_login_box_signup" 
+							        type="submit">
+								Submit		
+							</button>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			
+		</th:block>		
+		
+		
+		
+		
+		
+		<!-- Fragment: modal_body_login_box_signup_fragment --> 
+
+		<th:block th:fragment="modal_body_login_box_signup_fragment">
+					  
+			<form id="form_login_box_signup" 
+				  th:action="|${projectData.urlPrefixServer1}/accounts/create_account|" 
+				  method="post">
+
+					
+				<div class="input-group mb-3">
+					<span class="input-group-text">
+						Username:
+					</span>
+					<div class="form-floating">
+						<input id="login_box_signup_username" 
+						       class="form-control"
+						       type="text"
+							   maxlength="40"
+							   name="username"
+							   placeholder="Placeholder Username"
+							   required>
+						<label for="login_box_signup_username">
+							Username
+						</label>						
+					</div>			
+				</div>
+
+
+				<br />
+				
+				<div class="input-group mb-3">
+					<span class="input-group-text">
+						Password:
+					</span>
+					<div class="form-floating">
+						<input id="login_box_signup_password" 
+						       class="form-control"
+						       type="password"
+							   maxlength="40"
+							   name="password"
+							   placeholder="Placeholder Password"
+							   required>
+						<label for="login_box_signup_password">
+							Password
+						</label>						
+					</div>					
+				</div>
+
+
+				<br />
+					
+								
+					
+			</form>
+							
+		</th:block>	
+		
+		
+		<!-- DELETE ACCOUNT -->	
+
+			
+		<!-- Fragment: modal_login_box_delete_fragment --> 
+
+		<th:block th:fragment="modal_login_box_delete_fragment">
+			<div id="modal_login_box_delete"
+			     class="modal fade"
+				 tabindex="-1"
+				 aria-labelledby="modal_login_box_delete_title"
+				 aria-hidden="true">
+				 
+				<div class="modal-dialog modal-xl modal-fullscreen-md-down">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 id="modal_login_box_delete_title" 
+							    class="modal-title fs-5">
+								Delete Account
+							</h1>
+							<button class="btn-close" 
+							        type="button"
+									data-bs-dismiss="modal"
+									aria-label="Close">
+							</button>
+						</div>
+						<div class="modal-body">
+							<th:block th:replace="~{  :: modal_body_login_box_delete_fragment }"></th:block>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-secondary" 
+							        type="button"
+									data-bs-dismiss="modal">
+								Close
+							</button>
+							<button class="btn btn-info"
+							        form="form_login_box_delete" 
+							        type="reset">
+								Reset		
+							</button>							
+							<button class="btn btn-primary"
+							        form="form_login_box_delete" 
+							        type="submit">
+								Submit		
+							</button>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			
+		</th:block>		
+
+
+
+
+
+		<!-- Fragment: modal_body_login_box_delete_fragment --> 
+
+		<th:block th:fragment="modal_body_login_box_delete_fragment">
+					  
+			<form id="form_login_box_delete" 
+				  th:action="|${projectData.urlPrefixServer1}/accounts/delete_account/current_user|" 
+				  method="post">
+
+				<h3>
+					Delete this account?
+				</h3>								
+					
+			</form>
+							
+		</th:block>		
+		
+		
+		
+		
+		<!-- Fragment: login_box_placeholders_fragment --> 
+
+		<th:block th:fragment="login_box_placeholders_fragment">
+			
+			<div class="login_box_placeholders">
+				<span class="login_box_placeholders_form_submit">
+					<span class="spinner-border spinner-border-sm" role="placeholder">
+					</span>
+				</span>							
+			</div>
+						
+		</th:block>		
+			
+		
+		
+	</body>
+	
+</html>

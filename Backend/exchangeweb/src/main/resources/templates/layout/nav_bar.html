@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:th="http://www.thymeleaf.org">
+	  
+	<head>
+		
+		<th:block th:replace="~{ common/headers :: before_title }"></th:block>
+			  
+		<title>
+			Navigation Bar Page
+		</title>
+		
+		<th:block th:replace="~{ common/headers :: after_title }"></th:block>
+		
+		<th:block th:fragment="after_title">			
+			<link th:href="|${projectData.urlPrefixServer1}/layout/nav_bar_styles.css|"
+				  rel="stylesheet">
+		</th:block>		
+		
+	</head>
+	
+	
+	<body>
+		
+		<p>Current Page: Navigation Bar Page.</p>
+		
+		<th:block th:fragment="nav_bar">
+			
+			<nav id="nav_bar_block_id_1" 
+			     class="navbar navbar-expand-lg">
+				<div class="container-fluid">
+					<a class="navbar-brand" 
+					   th:href="|${projectData.urlPrefixServer1}/home_page|"> UMSE </a>
+					<button class="navbar-toggler" type="button"
+					        data-bs-toggle="collapse"
+							data-bs-target="#navbar_collapse_content"
+							aria-controls="navbar_collapse_content"
+							aria-expanded="false"
+							aria-label="navbar_toggle">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse"
+					     id="navbar_collapse_content">
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<li class="nav-item">
+								<a class="nav-link" 
+								   th:href="|${projectData.urlPrefixServer1}/company_listing_page|"> Stocks </a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" 
+								   th:href="|${projectData.urlPrefixServer1}/portfolio_listing_page|"> Portfolios </a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" 
+								   th:href="|${projectData.urlPrefixServer1}/about_page|"> About </a>
+							</li>
+						</ul>
+						<th:block th:replace="~{ login_box/login_box :: login_box_fragment }"></th:block>
+					</div>
+				</div>
+			</nav>
+			
+		</th:block>
+
+	</body>
+	
+</html>
+
+

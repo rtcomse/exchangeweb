@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:th="http://www.thymeleaf.org">
+	  
+	<head>
+		
+		<th:block th:replace="~{ common/headers :: before_title }"></th:block>
+			  
+		<title>
+			Price Scroll Page
+		</title>
+		
+		<th:block th:replace="~{ common/headers :: after_title }"></th:block>
+		
+		<th:block th:fragment="after_title">
+			<link th:href="|${projectData.urlPrefixServer1}/price_scroll/price_scroll_styles.css|"
+						      rel="stylesheet">
+							  
+			<script th:src="|${projectData.urlPrefixServer1}/price_scroll/price_scroll_script.mjs|"
+					        type="module"
+							defer>
+			</script>
+		</th:block>
+		
+		
+		
+	</head>
+	
+	
+	<body>
+		
+		<th:block th:fragment="price_scroll_content">
+			<div id="price_scroll_holder">
+				<div id="price_scroll_holder_1">				
+				</div>
+				<div id="price_scroll_holder_2">				
+				</div>		
+			</div>			
+		</th:block>
+		
+	</body>
+	
+</html>

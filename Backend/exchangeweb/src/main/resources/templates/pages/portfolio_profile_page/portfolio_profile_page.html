@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:th="http://www.thymeleaf.org">
+	  
+	<head>
+		
+		<th:block th:replace="~{ common/headers :: before_title }"></th:block>
+			  
+		<title>
+			Portfolio Profile Page
+		</title>
+		
+		<th:block th:replace="~{ common/headers :: after_title }"></th:block>
+		
+		
+		<th:block th:replace="~{ layout/grid_layout :: after_title }"></th:block>
+		
+		<th:block th:replace="~{ pages/portfolio_profile_page/portfolio_profile_page_fragments :: after_title }"></th:block>
+		
+	</head>
+	
+	
+	<body>
+		
+		<!-- Grid Layout -->
+		
+		<th:block th:replace="~{ layout/grid_layout :: grid_layout( ~{ pages/portfolio_profile_page/portfolio_profile_page_fragments 
+																		   :: grid_left_content }, 
+		                                                            ~{ pages/portfolio_profile_page/portfolio_profile_page_fragments 
+																		   :: grid_middle_content }, 
+																	~{} ) }">
+		</th:block>
+		
+
+	</body>
+	
+</html>
+
+

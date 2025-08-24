@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:th="http://www.thymeleaf.org">
+	  
+	<head>
+		
+		<th:block th:replace="~{ common/headers :: before_title }"></th:block>
+			  
+		<title>
+			Company Listing Page Fragments
+		</title>
+		
+		<th:block th:replace="~{ common/headers :: after_title }"></th:block>
+		
+
+		<th:block th:fragment="after_title">			
+			<link th:href="|${projectData.urlPrefixServer1}/pages/company_listing_page/company_listing_page_styles.css|"
+				  rel="stylesheet">
+			
+			<script th:src="|${projectData.urlPrefixServer1}/pages/company_listing_page/company_fetch.mjs|"
+					type="module"
+					defer>
+			</script>
+		</th:block>
+
+		
+	</head>
+	
+	
+	<body>
+		
+		<p>Current Page: Company Listing Page Fragments.</p>
+		
+		
+		<!-- Fragment: grid_middle_content --> 
+		
+		<th:block th:fragment="grid_middle_content">
+			<!-- <p>Welcome to the Company Listing Page.</p> -->
+			
+			<th:block th:with="condition = true">
+							   
+				<th:block th:if="${condition}">
+					<th:block th:replace="~{  :: content_fragment }"></th:block>
+					<th:block th:replace="~{  :: page_placeholders_fragment }"></th:block>
+				</th:block>
+				<th:block th:unless="${condition}">
+					<th:block th:replace="~{  :: error_message_fragment }"></th:block>			
+				</th:block>
+				
+			</th:block>
+			
+		</th:block>
+		
+		
+
+		<!-- Fragment: content_fragment --> 
+
+		<th:block th:fragment="content_fragment">
+			<th:block th:replace="~{  :: content_header_fragment }"></th:block>
+			<th:block th:replace="~{  :: alphabet_list_fragment }"></th:block>		
+		</th:block>
+		
+		<!-- Fragment: content_header_fragment --> 
+
+		<th:block th:fragment="content_header_fragment">
+			<div id="content_header_block_id_1">
+				<div class="title">
+					<h1>
+						Welcome to the Company Listing Page.
+					</h1>
+				</div>
+				<div class="content">
+					<p>All companies are listed according to their company symbol in alphabetical order.</p>
+					<p>
+						Please click on one of the letters below 
+						to view the list of companies 
+						that have a company symbol 
+						that starts with that letter.
+					</p>
+				</div>
+			</div>	
+		</th:block>		
+		
+		
+
+		
+		<!-- Fragment: alphabet_list_fragment -->
+
+		<th:block th:fragment="alphabet_list_fragment">
+			<th:block th:with="alphabetList = ${#strings.listSplit( 'A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z', ',' )}">
+				<th:block th:replace="~{  :: alphabet_accordion_fragment }"></th:block>
+			</th:block>
+		</th:block>
+		
+		<!-- Fragment: alphabet_accordion_fragment -->
+		
+		<th:block th:fragment="alphabet_accordion_fragment">
+			<div id="alphabet_accordion_block_id_1" class="accordion">
+				<th:block th:each="currAlphabet : ${alphabetList}" >
+					<th:block th:replace="~{  :: alphabet_accordion_item_fragment }"></th:block>
+				</th:block>				
+			</div>
+		</th:block>
+		
+		<!-- Fragment: alphabet_accordion_item_fragment -->
+		
+		<th:block th:fragment="alphabet_accordion_item_fragment">
+			<div th:id="|accordion_item_id_${currAlphabet}|" class="accordion-item">
+				<h2 th:id="|accordion_header_id_${currAlphabet}|" class="accordion-header">
+					<button class="accordion-button collapsed"
+					        type="button"
+							data-bs-toggle="collapse"
+							data-bs-target=""
+							aria-expanded="false"
+							aria-controls=""
+							th:attr="data-bs-target = |#accordion_collapse_id_${currAlphabet}|,
+							         aria-controls = |accordion_collapse_id_${currAlphabet}|"
+							th:text="|${currAlphabet}|">
+					</button>
+				</h2>
+				<div th:id="|accordion_collapse_id_${currAlphabet}|" class="accordion-collapse collapse"
+				     data-bs-parent="alphabet_accordion_block_id_1">
+					<div th:id="|accordion_body_id_${currAlphabet}|" class="accordion-body">
+						 <th:block th:replace="~{  :: company_list_fragment }"></th:block>						 
+					</div>
+				</div>
+			</div>
+		</th:block>
+		
+		
+		<!-- Fragment: company_list_fragment -->
+
+		<th:block th:fragment="company_list_fragment">
+			<div class="table-responsive">
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Symbol</th>
+							<th scope="col">Name</th>
+						</tr>
+					</thead>
+					<tbody class="table-group-divider">
+					</tbody>
+				</table>
+			</div>
+		</th:block>
+		
+		
+		
+		<!-- Fragment: grid_left_content --> 
+
+		<th:block th:fragment="grid_left_content">
+			
+			<th:block th:with="condition = true">
+							   
+				<th:block th:if="${condition}">
+					<th:block th:replace="~{  :: nav_bar_left_fragment }"></th:block>
+				</th:block>
+				
+			</th:block>
+			
+		</th:block>	
+		
+		
+		<!-- Fragment: nav_bar_left_fragment --> 
+
+		<th:block th:fragment="nav_bar_left_fragment">
+			
+			<div id="nav_bar_left_block_id_1" class="nav_bar_left_block container-fluid text-center">		
+				<div class="row">
+					<div class="col py-3">
+						<button id="button_create_company"
+						        class="btn rounded-pill w-100" 
+						        type="button"
+								data-bs-toggle="modal"
+								data-bs-target="#modal_create_company">
+							Create Company
+						</button>
+					</div>					
+				</div>				
+				<div class="row">
+					<div class="col py-3">
+						<button id="button_delete_company"
+						        class="btn rounded-pill w-100" 
+						        type="button"
+								data-bs-toggle="modal"
+								data-bs-target="#modal_delete_company">
+							Delete Company
+						</button>
+					</div>					
+				</div>						
+			</div>
+			
+			<th:block th:replace="~{  :: nav_bar_left_modal_create_company_fragment }"></th:block>
+			<th:block th:replace="~{  :: nav_bar_left_modal_delete_company_fragment }"></th:block>
+			
+		</th:block>	
+		
+		
+		<!-- CREATE COMPANY -->	
+
+			
+		<!-- Fragment: nav_bar_left_modal_create_company_fragment --> 
+
+		<th:block th:fragment="nav_bar_left_modal_create_company_fragment">
+			<div id="modal_create_company"
+			     class="modal fade"
+				 tabindex="-1"
+				 aria-labelledby="modal_create_company_title"
+				 aria-hidden="true">
+				 
+				<div class="modal-dialog modal-xl modal-fullscreen-md-down">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 id="modal_create_company_title" 
+							    class="modal-title fs-5">
+								Create Company
+							</h1>
+							<button class="btn-close" 
+							        type="button"
+									data-bs-dismiss="modal"
+									aria-label="Close">
+							</button>
+						</div>
+						<div class="modal-body">
+							<th:block th:replace="~{  :: modal_body_create_company_fragment }"></th:block>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-secondary" 
+							        type="button"
+									data-bs-dismiss="modal">
+								Close
+							</button>
+							<button class="btn btn-info"
+							        form="form_create_company" 
+							        type="reset">
+								Reset		
+							</button>							
+							<button class="btn btn-primary"
+							        form="form_create_company" 
+							        type="submit">
+								Submit		
+							</button>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			
+		</th:block>
+		
+		
+		<!-- Fragment: modal_body_create_company_fragment --> 
+
+		<th:block th:fragment="modal_body_create_company_fragment">
+				  
+			<form id="form_create_company" 
+			      th:action="|${projectData.urlPrefixServer1}/companies/create_company|" 
+			      method="post">
+
+				
+				<div class="input-group mb-3">
+					<span class="input-group-text">
+						Company Name:
+					</span>
+					<div class="form-floating">
+						<input id="create_company_name" 
+						       class="form-control"
+						       type="text"
+							   maxlength="40"
+							   name="name"
+							   placeholder="Placeholder Company Name"
+							   required>
+						<label for="create_company_name">
+							Company Name
+						</label>						
+					</div>					
+				</div>
+
+
+				<br />
+				
+				
+				<div class="input-group mb-3">
+					<span class="input-group-text">
+						Company Symbol:
+					</span>
+					<div class="form-floating">
+						<input id="create_company_symbol" 
+						       class="form-control"
+						       type="text"
+							   maxlength="40"
+							   name="symbol"
+							   pattern="[A-Za-z0-9_]+"
+							   title="Only alphanumeric characters or underscores. No whitespaces."
+							   placeholder="Placeholder Company Symbol"
+							   required>
+						<label for="create_company_symbol">
+							Company Symbol
+						</label>						
+					</div>					
+				</div>
+				
+				
+				
+				<div class="input-group mb-3">
+					<span class="input-group-text">
+						Company Description:
+					</span>
+					<div class="form-floating">
+						<input id="create_company_description" 
+						       class="form-control"
+						       type="text"
+							   maxlength="500"
+							   name="description"
+							   placeholder="Placeholder Company Description"
+							   required>
+						<label for="create_company_description">
+							Company Description
+						</label>						
+					</div>				
+				</div>
+				
+				<div class="input-group mb-3">
+					<span class="input-group-text">
+						Price:
+					</span>
+					<input class="form-control"
+						   type="number"
+						   min="0.00"
+						   step="0.01"
+						   name="price_list"
+						   value="0.00">			
+				</div>
+				
+				
+				<button id="create_company_price_list_add_more_button"
+				        class="btn btn-primary"
+						type="button">
+					Add More		
+				</button>
+				
+				<br />
+				<br />
+				<br />
+				<br />
+				
+				
+				<div class="input-group mb-3">
+					<span class="input-group-text">
+						Quote Price:
+					</span>
+					<input id="create_company_quote_price" 
+					       class="form-control"
+					       type="number"
+						   min="0.00"
+						   step="0.01"
+						   name="quote_price"
+						   value="0.00">			
+				</div>
+				
+				<br />	
+				
+				
+				<div>
+					<h5>
+						Note: Please login as an admin to create a company.
+					</h5>
+				</div>	
+				
+				<br />
+	
+				
+								
+				
+			</form>
+						
+		</th:block>
+		
+		
+		<!-- DELETE COMPANY -->
+
+
+
+		<!-- Fragment: nav_bar_left_modal_delete_company_fragment --> 
+
+		<th:block th:fragment="nav_bar_left_modal_delete_company_fragment">
+			<div id="modal_delete_company"
+			     class="modal fade"
+				 tabindex="-1"
+				 aria-labelledby="modal_delete_company_title"
+				 aria-hidden="true">
+				 
+				<div class="modal-dialog modal-xl modal-fullscreen-md-down">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 id="modal_delete_company_title" 
+							    class="modal-title fs-5">
+								Delete Company
+							</h1>
+							<button class="btn-close" 
+							        type="button"
+									data-bs-dismiss="modal"
+									aria-label="Close">
+							</button>
+						</div>
+						<div class="modal-body">
+							<th:block th:replace="~{  :: modal_body_delete_company_fragment }"></th:block>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-secondary" 
+							        type="button"
+									data-bs-dismiss="modal">
+								Close
+							</button>
+							<button class="btn btn-info"
+							        form="form_delete_company" 
+							        type="reset">
+								Reset		
+							</button>							
+							<button class="btn btn-primary"
+							        form="form_delete_company" 
+							        type="submit">
+								Submit		
+							</button>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			
+		</th:block>	
+		
+		
+		<!-- Fragment: modal_body_delete_company_fragment --> 
+
+		<th:block th:fragment="modal_body_delete_company_fragment">
+				  
+			<form id="form_delete_company" 
+			      th:action="|${projectData.urlPrefixServer1}/companies/delete_company|" 
+			      method="post">
+				
+				
+				
+				<div class="text-start mb-3">
+					<h4>
+						Please select the checkbox next to the company you want to delete:
+					</h4>
+				</div>
+				
+				<!-- START CHECKBOX -->
+				<th:block th:each="currCompany, loopStatus : ${companyList}">
+					
+					<div class="input-group mb-3">
+						
+						<div class="input-group-text">
+							<input id="delete_company_checkbox" 
+							       class="form-check-input"
+							       type="checkbox"
+								   th:name="|company_id_list|"
+								   th:value="|${currCompany.id}|"
+								   aria-label="Delete Company Checkbox">								
+						</div>
+						
+						<div class="form-floating">
+							<input id="delete_company_symbol" 
+							       class="form-control"
+							       type="text"
+								   maxlength="40"
+								   th:value="|${currCompany.symbol}|"
+								   placeholder="Place Holder Symbol"
+								   readonly>
+							<label for="delete_company_symbol">
+								Symbol
+							</label>															   							
+						</div>
+						
+						<div class="form-floating">
+							<input id="delete_company_name" 
+							       class="form-control"
+							       type="text"
+								   maxlength="40"
+								   th:value="|${currCompany.name}|"
+								   placeholder="Place Holder Name"
+								   readonly>
+							<label for="delete_company_name">
+								Name
+							</label>															   							
+						</div>
+						
+
+										
+						<div class="form-floating">
+							<input id="delete_company_description" 
+							       class="form-control"
+							       type="text"
+								   maxlength="40"
+								   th:value="|${currCompany.description}|"
+								   placeholder="Place Holder Description"
+								   readonly>
+							<label for="delete_company_description">
+								Description
+							</label>															   							
+						</div>
+						
+					</div>					
+
+						   								
+				</th:block>
+				
+				<br />
+				
+				
+				<div>
+					<h5>
+						Note: Please login as an admin to delete a company.
+					</h5>
+				</div>	
+
+				<br />				
+								
+				
+			</form>
+						
+		</th:block>
+		
+		
+		<!-- Fragment: page_placeholders_fragment --> 
+
+		<th:block th:fragment="page_placeholders_fragment">
+			
+			<div class="page_placeholders">
+				<span class="page_placeholders_form_submit">
+					<span class="spinner-border spinner-border-sm" role="placeholder">
+					</span>
+				</span>							
+			</div>
+						
+		</th:block>	
+		
+		
+		
+		<!-- Fragment: error_message_fragment --> 
+
+		<th:block th:fragment="error_message_fragment">
+			<div class="error_message_block">
+				<div class="error_message_title_block">
+					<p>Error Message:</p>
+				</div>
+				<div class="error_message_content_block">
+					<p th:text="|There has been an error.|"></p>
+				</div>
+			</div>
+		</th:block>
+
+		
+
+	</body>
+	
+</html>
+
